@@ -3,13 +3,12 @@ import json
 import uvicorn
 from fastapi import FastAPI
 from datetime import datetime
-from parameters import TRANSACTIONS_TOPIC, DELAY
+from multiprocessing import Process
+from streaming_kafka.predictive_maintenance import detect
 from streaming_kafka.confluent_utils import create_producer
+from parameters import TRANSACTIONS_TOPIC, DELAY, NUM_PARTITIONS
 
 app = FastAPI()
-for _ in range(NUM_PARTITIONS):
-    p = Process(target=detect)
-    p.start()
 
 
 def increment_counter():
@@ -20,6 +19,12 @@ def increment_counter():
     with open("counter.json", "w") as outfile:
         outfile.write(json_object)
     return tmp["number"]
+
+@app.on_event("startup")
+async def startup_event():
+    for _ in range(NUM_PARTITIONS):
+        p = Process(target=detect)
+        p.start()
 
 @app.get("/event")
 def get_event(data: int):
