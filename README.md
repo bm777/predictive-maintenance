@@ -28,15 +28,27 @@ bin/kafka-topics.sh --create --topic normals --bootstrap-server localhost:9092
 We can check our created topics by this command `kafka-topics.sh --bootstrap-server localhost:9092 --list`, the result should be three topics.
 
 
-#### 2. Start the producer (from our distributed users)
+#### 2. Start the predictive maintenance process
+
+- run the Process
+
+```
+python streaming_kafka/predictive_maintenance.py
+```
+
+- watch the topic of your choice {`transactions`, `anomalies`, and `normals` } in the consumer
+
+```
+bin/kafka-console-consumer.sh --topic transactions --from-beginning --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic anomalies --from-beginning --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic normals --from-beginning --bootstrap-server localhost:9092
+```
+[alt](assets/topics.png)
+
+#### 3. Start the producer (from our distributed users)
 
 ```
 python streaming_kafka/producer.py
-```
-#### 3. Start the predictive maintenance
-
-```
-python predictive_maintenance.py
 ```
 
 #### 4. Alerts bot to slack (building...)
