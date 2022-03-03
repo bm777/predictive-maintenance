@@ -54,10 +54,12 @@ bin/kafka-console-consumer.sh --topic normals --from-beginning --bootstrap-serve
 python streaming_kafka/producer.py
 ```
 
-- Dynamic producer: using REST FastAPI (building)
+- Dynamic producer: using REST FastAPI
 
  ```
 http://localhost:5500/event?data=11
- ```
+
+
+ ![alt](assets/transaction-api.png)
 
 #### 4. Alerts bot to slack (building...)
