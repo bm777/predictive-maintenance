@@ -31,5 +31,5 @@ We can check our topics created by this command `kafka-topics.sh --zookeeper loc
 #### 2. Start the producer (from our distributed users)
 
 ```
-streaming/producer.py
+streaming_kafka/producer.py
 ```

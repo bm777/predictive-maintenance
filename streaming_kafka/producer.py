@@ -4,7 +4,7 @@ import random
 import numpy as np
 from datetime import datetime
 from streaming_kafka.confluent_utils import create_producer
-from settings import TRANSACTIONS_TOPIC, DELAY, OUTLIERS_GENERATION_PROBABILITY
+from parameters import TRANSACTIONS_TOPIC, DELAY
 
 _id = 0
 producer = create_producer()
