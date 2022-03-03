@@ -1,7 +1,7 @@
-# predictive-maintenance
-predictive maintenance using ML, hosted by FastAPI and Kafka
+# Predictive-maintenance
+Predictive maintenance using ML, hosted by FastAPI and Kafka
 
-# settings
+# Settings
 Try to clone the repo.
 
 ```
@@ -25,7 +25,7 @@ bin/kafka-topics.sh --create --topic anomalies --bootstrap-server localhost:9092
 bin/kafka-topics.sh --create --topic normals --bootstrap-server localhost:9092
 ```
 
-We can check our created topics by this command `kafka-topics.sh --bootstrap-server localhost:9092 --list`, they should be three.
+We can check our created topics by this command `kafka-topics.sh --bootstrap-server localhost:9092 --list`, the result should be three topics.
 
 
 #### 2. Start the producer (from our distributed users)
@@ -39,4 +39,4 @@ python streaming_kafka/producer.py
 python predictive_maintenance.py
 ```
 
-#### 4. Alterts bot to slack (building...)
+#### 4. Alerts bot to slack (building...)
