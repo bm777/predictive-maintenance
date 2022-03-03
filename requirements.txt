@@ -1,4 +1,4 @@
-scikit-learn==0.23.0
+scikit-learn
 confluent-kafka
-slackclient==2.9-3
+slackclient
 python-dotenv==0.17.1
