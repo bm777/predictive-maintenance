@@ -47,8 +47,16 @@ bin/kafka-console-consumer.sh --topic normals --from-beginning --bootstrap-serve
 
 #### 3. Start the producer (from our distributed users)
 
+- static producer
+
 ```
 python streaming_kafka/producer.py
 ```
 
+- Dynamic producer: using REST FastAPI (building)
+  - POST
+ ```
+http://localhost:5500/<event>
+ ```
+ 
 #### 4. Alerts bot to slack (building...)
