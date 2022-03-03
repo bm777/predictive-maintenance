@@ -57,7 +57,7 @@ python streaming_kafka/producer.py
 - Dynamic producer: using REST FastAPI (building)
 
  ```
-http://localhost:5500/<event>
+http://localhost:5500/event?data=11
  ```
 
 #### 4. Alerts bot to slack (building...)
