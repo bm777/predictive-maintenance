@@ -1,10 +1,9 @@
 import json
 import time
 import random
-import numpy as np
 from datetime import datetime
-from streaming_kafka.confluent_utils import create_producer
 from parameters import TRANSACTIONS_TOPIC, DELAY
+from streaming_kafka.confluent_utils import create_producer
 
 _id = 0
 producer = create_producer()

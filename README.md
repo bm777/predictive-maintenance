@@ -43,6 +43,7 @@ bin/kafka-console-consumer.sh --topic transactions --from-beginning --bootstrap-
 bin/kafka-console-consumer.sh --topic anomalies --from-beginning --bootstrap-server localhost:9092
 bin/kafka-console-consumer.sh --topic normals --from-beginning --bootstrap-server localhost:9092
 ```
+
 ![alt](assets/topics.png)
 
 #### 3. Start the producer (from our distributed users)
@@ -54,9 +55,9 @@ python streaming_kafka/producer.py
 ```
 
 - Dynamic producer: using REST FastAPI (building)
-  - POST
+
  ```
 http://localhost:5500/<event>
  ```
- 
+
 #### 4. Alerts bot to slack (building...)
