@@ -2,11 +2,18 @@
 predictive maintenance using ML, hosted by FastAPI and Kafka
 
 # settings
+Try to clone the repo.
+
+```
+$ git clone https://github.com/bm777/predictive-maintenance.git
+```
 
 #### 0. Set up the kafka env
 
 ```
-$ bash server-cron-start.sh
+$ cd kafka
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+$ bin/kafka-server-start.sh config/server.properties
 ```
 
 #### 1. Create the transactions, anomalies and normals topics in Kafka Consumer

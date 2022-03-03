@@ -8,8 +8,8 @@ load_dotenv(dotenv_path)
 DELAY = 0.01        # delay for event to be created in while True loop
 NUM_PARTITIONS = 3
 KAFKA_BROKER = "localhost:9092"
-TRANSACTIONS_TOPIC = f"{os.environ.get("MAIN_TOPIC")}"
-TRANSACTIONS_CONSUMER_GROUP = f"{os.environ.get("MAIN_TOPIC")}"
+TRANSACTIONS_TOPIC = os.environ.get("MAIN_TOPIC")
+TRANSACTIONS_CONSUMER_GROUP = os.environ.get("MAIN_TOPIC")
 ANOMALIES_TOPIC = "anomalies"
 ANOMALIES_CONSUMER_GROUP = "anomalies"
 NORMALS_TOPIC = "normals"
