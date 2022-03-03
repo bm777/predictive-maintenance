@@ -5,7 +5,7 @@ import numpy as np
 from joblib import load
 from multiprocessing import Process
 from streaming.utils import create_producer, create_consumer
-from settings import TRANSACTIONS_TOPIC, TRANSACTIONS_CONSUMER_GROUP, ANOMALIES_TOPIC, NUM_PARTITIONS
+from settings import TRANSACTIONS_TOPIC, TRANSACTIONS_CONSUMER_GROUP, ANOMALIES_TOPIC, NORMALS_TOPIC, NUM_PARTITIONS
 
 def detect():
     consumer = create_consumer(topic=TRANSACTIONS_TOPIC, group_id=TRANSACTIONS_CONSUMER_GROUP)
@@ -15,7 +15,7 @@ def detect():
         message = consumer.poll(timeout=50)
         if message is None:
             continue
-            
+
         if message.error():
             logging.error("Consumer error: {}".format(message.error()))
             continue
@@ -24,19 +24,30 @@ def detect():
         record = json.loads(message.value().decode('utf-8'))
         data = record["data"]
 
-        prediction = clf.predict(data)
+        prediction = data # prediction operation
 
         # If an anomaly comes in, send it to anomalies topic
-        if prediction[0] == -1:
-            score = clf.score_samples(data)
-            record["score"] = np.round(score, 3).tolist()
+        if !isinstance(prediction, str):
+            score = [[0.9]]
+            record["score"] = score
 
             _id = str(record["id"])
             record = json.dumps(record).encode("utf-8")
 
-            producer.produce(topic=ANOMALIES_TOPIC,
-                             value=record)
+            producer.produce(topic=ANOMALIES_TOPIC, value=record)
             producer.flush()
+
+        else:
+            score = [[0.2]]
+            record["score"] = score
+
+            _id = str(record["id"])
+            record = json.dumps(record).encode("utf-8")
+
+            producer.produce(topic=NORMALS_TOPIC, value=record)
+            producer.flush()
+
+
 
         # consumer.commit() # Uncomment to process all messages, not just new ones
 
