@@ -4,8 +4,8 @@ import logging
 import numpy as np
 from joblib import load
 from multiprocessing import Process
-from streaming.utils import create_producer, create_consumer
-from settings import TRANSACTIONS_TOPIC, TRANSACTIONS_CONSUMER_GROUP, ANOMALIES_TOPIC, NORMALS_TOPIC, NUM_PARTITIONS
+from streaming_kafka.confluent_utils import create_producer, create_consumer
+from parameters import TRANSACTIONS_TOPIC, TRANSACTIONS_CONSUMER_GROUP, ANOMALIES_TOPIC, NORMALS_TOPIC, NUM_PARTITIONS
 
 def detect():
     consumer = create_consumer(topic=TRANSACTIONS_TOPIC, group_id=TRANSACTIONS_CONSUMER_GROUP)
@@ -49,6 +49,11 @@ def detect():
 
 
 
-        # consumer.commit() # Uncomment to process all messages, not just new ones
+        # consumer.commit() # Uncomment this, to process all messages, not just new ones
 
     consumer.close()
+
+# One consumer per partition (we have 3 partition, 1 suffices)
+for _ in range(NUM_PARTITIONS):
+    p = Process(target=detect)
+    p.start()

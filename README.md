@@ -33,3 +33,8 @@ We can check our created topics by this command `kafka-topics.sh --bootstrap-ser
 ```
 streaming_kafka/producer.py
 ```
+#### 3. Start the predictive maintenance
+
+```
+predictive_maintenance.py
+```
