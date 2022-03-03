@@ -28,13 +28,10 @@ bin/kafka-topics.sh --create --topic normals --bootstrap-server localhost:9092
 We can check our created topics by this command `kafka-topics.sh --bootstrap-server localhost:9092 --list`, the result should be three topics.
 
 
-#### 2. Start the predictive maintenance process
+#### 2. The predictive maintenance thread & the topics
 
-- run the Process
+- The predictive maintenance thread is started automatically in fastapi's startup event. So no need to run `python streaming_kafka/predictive_maintenance.py`
 
-```
-python streaming_kafka/predictive_maintenance.py
-```
 
 - [optional] watch the topic of your choice {`transactions`, `anomalies`, and `normals` } in the consumer
 
@@ -48,7 +45,7 @@ bin/kafka-console-consumer.sh --topic normals --from-beginning --bootstrap-serve
 
 #### 3. Start the producer (from our distributed users)
 
-- static producer
+- Static producer: in making event in cascade :)
 
 ```
 python streaming_kafka/producer.py
