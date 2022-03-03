@@ -21,10 +21,12 @@ if producer is not None:
         current_time = datetime.utcnow().isoformat()
 
         record = {"id": _id, "data": X_test, "current_time": current_time}
+        print(f"producing event_{_id}: {record}")
         record = json.dumps(record).encode("utf-8")
 
         producer.produce(topic=TRANSACTIONS_TOPIC,
                          value=record)
         producer.flush()
+
         _id += 1
         time.sleep(DELAY)

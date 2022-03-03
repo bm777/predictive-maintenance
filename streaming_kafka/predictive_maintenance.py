@@ -27,7 +27,7 @@ def detect():
         prediction = data # prediction operation
 
         # If an anomaly comes in, send it to anomalies topic
-        if !isinstance(prediction, str):
+        if isinstance(prediction, str):
             score = [[0.9]]
             record["score"] = score
 

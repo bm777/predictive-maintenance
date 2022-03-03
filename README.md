@@ -25,7 +25,7 @@ $ bin/kafka-topics.sh --create --topic anomalies --bootstrap-server localhost:90
 $ bin/kafka-topics.sh --create --topic normals --bootstrap-server localhost:9092
 ```
 
-We can check our topics created by this command `kafka-topics.sh --zookeeper localhost:9092 --list`, they should be three.
+We can check our created topics by this command `kafka-topics.sh --bootstrap-server localhost:9092 --list`, they should be three.
 
 
 #### 2. Start the producer (from our distributed users)
