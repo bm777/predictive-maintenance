@@ -36,14 +36,14 @@ We can check our created topics by this command `kafka-topics.sh --bootstrap-ser
 python streaming_kafka/predictive_maintenance.py
 ```
 
-- watch the topic of your choice {`transactions`, `anomalies`, and `normals` } in the consumer
+- [optional] watch the topic of your choice {`transactions`, `anomalies`, and `normals` } in the consumer
 
 ```
 bin/kafka-console-consumer.sh --topic transactions --from-beginning --bootstrap-server localhost:9092
 bin/kafka-console-consumer.sh --topic anomalies --from-beginning --bootstrap-server localhost:9092
 bin/kafka-console-consumer.sh --topic normals --from-beginning --bootstrap-server localhost:9092
 ```
-[alt](assets/topics.png)
+![alt](assets/topics.png)
 
 #### 3. Start the producer (from our distributed users)
 
