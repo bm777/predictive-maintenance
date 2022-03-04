@@ -17,3 +17,6 @@ ANOMALIES_CONSUMER_GROUP = "anomalies"
 
 NORMALS_TOPIC = "normals"
 NORMALS_CONSUMER_GROUP = "normals"
+
+SLACK_API_TOKEN = os.environ.get("SLACK_API_TOKEN")
+SLACK_CHANNEL = "slack-kafka-test"

@@ -59,4 +59,6 @@ http://localhost:5500/event?data=11
 
   ![alt](assets/transaction-api.png)
 
-#### 4. Alerts bot to slack (building...)
+#### 4. Alerts bot to slack
+
+![alt](assets/rt.png)

@@ -65,4 +65,4 @@ def get_event(data: int):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5500)
+    uvicorn.run(app, host="0.0.0.0", port=5400)
