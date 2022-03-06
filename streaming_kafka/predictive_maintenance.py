@@ -53,8 +53,3 @@ def detect():
         # consumer.commit() # Uncomment this, to process all messages, not just new ones
 
     consumer.close()
-
-# One consumer per partition (we have 3 partition, 1 suffices)
-for _ in range(NUM_PARTITIONS):
-    p = Process(target=detect)
-    p.start()
